@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3edbb320-7ce8-41c4-ace6-19227ac63356">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[select * from cliente;]]>
+	</queryString>
+	<field name="id_cliente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_comercial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cedula_rnc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correo_electronico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="-20" width="553" height="90" forecolor="#0099CC" backcolor="#0099CC" uuid="0002337d-5bfd-485b-a2e4-a9494518bc83"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="Title" x="11" y="0" width="276" height="55" uuid="df208c75-1482-4358-aa5d-47b26550fe9a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bell MT" size="42"/>
+				</textElement>
+				<text><![CDATA[Maxcaribe]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="46" width="552" height="24" forecolor="#FFFFFF" backcolor="#00CC99" uuid="7197894e-bcdd-4dcd-a0f0-448b69456101"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="SubTitle" x="12" y="46" width="200" height="24" forecolor="#FFFFFF" uuid="2efd0d0b-a675-4bae-870d-6674b0b47891"/>
+				<textElement>
+					<font fontName="Bell MT" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de cliente]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="1873bebe-3c09-47fd-a88f-6c7819364ae2"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="92" height="15" forecolor="#000000" uuid="59e22e1c-6810-41e9-91fd-e27c7ebee45a"/>
+				<textElement>
+					<font fontName="Book Antiqua"/>
+				</textElement>
+				<text><![CDATA[id_cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="92" y="19" width="92" height="15" forecolor="#000000" uuid="f749cef7-a835-4a72-baf7-b6c563985efe"/>
+				<textElement>
+					<font fontName="Book Antiqua"/>
+				</textElement>
+				<text><![CDATA[nombre_comercial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="184" y="19" width="92" height="15" forecolor="#000000" uuid="9ea2ffdb-e2dc-4f6b-8f50-f2d2cc1235db"/>
+				<textElement>
+					<font fontName="Book Antiqua"/>
+				</textElement>
+				<text><![CDATA[cedula_rnc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="19" width="92" height="15" forecolor="#000000" uuid="b9284c82-9a66-4b41-b6af-bfaefe9a528f"/>
+				<textElement>
+					<font fontName="Book Antiqua"/>
+				</textElement>
+				<text><![CDATA[direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="368" y="19" width="92" height="15" forecolor="#000000" uuid="14b10af2-6aa4-4914-a129-eeae81abaca1"/>
+				<textElement>
+					<font fontName="Book Antiqua"/>
+				</textElement>
+				<text><![CDATA[telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="460" y="19" width="92" height="15" forecolor="#000000" uuid="4378882f-03c7-4a79-9060-943ed0c4600b"/>
+				<textElement>
+					<font fontName="Book Antiqua"/>
+				</textElement>
+				<text><![CDATA[correo_electronico]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="55c1a82f-ba23-4ff8-91cd-84f96c66709e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="92" height="15" uuid="6d96c1ce-487f-4163-acae-05cf903b72c6"/>
+				<textFieldExpression><![CDATA[$F{id_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="92" y="0" width="92" height="15" uuid="b0cf2928-be5c-47b5-9779-846accac3fc9"/>
+				<textFieldExpression><![CDATA[$F{nombre_comercial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="184" y="0" width="92" height="15" uuid="127e34b4-296b-4b34-b9da-6c2f45acfa29"/>
+				<textFieldExpression><![CDATA[$F{cedula_rnc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="276" y="0" width="92" height="15" uuid="f1312a04-1446-4b91-9e7c-45401ed8244c"/>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="368" y="0" width="92" height="15" uuid="a1821e09-2779-4eed-ae9b-57d679011504"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="460" y="0" width="92" height="15" uuid="cea8f49c-787c-44d6-81f4-53f3eb8d0636"/>
+				<textFieldExpression><![CDATA[$F{correo_electronico}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="19" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="6be3fd70-656b-4748-95f7-92c03c05c173"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="552" height="20" forecolor="#FFFFFF" backcolor="#00CC99" uuid="2e740aba-6ea5-4aa0-af10-e00ce7a639f9"/>
+			</rectangle>
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="31776401-e9f0-4b4b-b9c3-98ca6eb334de"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="195dbd54-9135-4a03-b6e9-afcc660876e8"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="44303231-32f7-4a4f-b485-6b63ab9ff357"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
