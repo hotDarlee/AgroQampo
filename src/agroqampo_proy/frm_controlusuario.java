@@ -35,14 +35,14 @@ public class frm_controlusuario extends javax.swing.JFrame {
         ape = new javax.swing.JLabel();
         rol = new javax.swing.JLabel();
         field_user = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
+        blue_panel = new javax.swing.JPanel();
+        separador_top = new javax.swing.JSeparator();
+        controluser = new javax.swing.JLabel();
         field_nom = new javax.swing.JTextField();
-        field_clave1 = new javax.swing.JTextField();
+        field_clave = new javax.swing.JTextField();
         field_correo = new javax.swing.JTextField();
         field_ape = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        combo_rol = new javax.swing.JComboBox<>();
         separadoruser = new javax.swing.JSeparator();
         separadoruser1 = new javax.swing.JSeparator();
         separadoruser2 = new javax.swing.JSeparator();
@@ -78,33 +78,33 @@ public class frm_controlusuario extends javax.swing.JFrame {
         field_user.setText("Ingrese User");
         field_user.setBorder(null);
 
-        jPanel2.setBackground(new java.awt.Color(62, 33, 147));
+        blue_panel.setBackground(new java.awt.Color(75, 220, 197));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Control Usuario");
+        controluser.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        controluser.setForeground(new java.awt.Color(255, 255, 255));
+        controluser.setText("Control Usuario");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout blue_panelLayout = new javax.swing.GroupLayout(blue_panel);
+        blue_panel.setLayout(blue_panelLayout);
+        blue_panelLayout.setHorizontalGroup(
+            blue_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(blue_panelLayout.createSequentialGroup()
+                .addGroup(blue_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(blue_panelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(separador_top, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(blue_panelLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jLabel1)))
+                        .addComponent(controluser)))
                 .addContainerGap(177, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        blue_panelLayout.setVerticalGroup(
+            blue_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, blue_panelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(controluser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(separador_top, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
 
@@ -113,13 +113,13 @@ public class frm_controlusuario extends javax.swing.JFrame {
         field_nom.setText("Ingrese Nombre");
         field_nom.setBorder(null);
 
-        field_clave1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        field_clave1.setForeground(new java.awt.Color(153, 153, 153));
-        field_clave1.setText("Ingrese Clave");
-        field_clave1.setBorder(null);
-        field_clave1.addActionListener(new java.awt.event.ActionListener() {
+        field_clave.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        field_clave.setForeground(new java.awt.Color(153, 153, 153));
+        field_clave.setText("Ingrese Clave");
+        field_clave.setBorder(null);
+        field_clave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field_clave1ActionPerformed(evt);
+                field_claveActionPerformed(evt);
             }
         });
 
@@ -133,9 +133,9 @@ public class frm_controlusuario extends javax.swing.JFrame {
         field_ape.setText("Ingrese Apellido");
         field_ape.setBorder(null);
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(153, 153, 153));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione ROL", "Item 2", "Item 3", "Item 4" }));
+        combo_rol.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        combo_rol.setForeground(new java.awt.Color(153, 153, 153));
+        combo_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione ROL", "Item 2", "Item 3", "Item 4" }));
 
         separadoruser.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -154,7 +154,7 @@ public class frm_controlusuario extends javax.swing.JFrame {
         panelfondoLayout.setHorizontalGroup(
             panelfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelfondoLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(blue_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(panelfondoLayout.createSequentialGroup()
                 .addGap(62, 62, 62)
@@ -180,27 +180,22 @@ public class frm_controlusuario extends javax.swing.JFrame {
                                     .addGroup(panelfondoLayout.createSequentialGroup()
                                         .addComponent(clave)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(field_clave1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(field_clave, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(panelfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelfondoLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(panelfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelfondoLayout.createSequentialGroup()
-                                                .addComponent(correo)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(field_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelfondoLayout.createSequentialGroup()
-                                                .addComponent(rol)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelfondoLayout.createSequentialGroup()
-                                                .addComponent(ape)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(field_ape, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelfondoLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                                        .addComponent(separadoruser3, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(correo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(field_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelfondoLayout.createSequentialGroup()
+                                        .addComponent(rol)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(combo_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelfondoLayout.createSequentialGroup()
+                                        .addComponent(ape)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(field_ape, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(separadoruser3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panelfondoLayout.createSequentialGroup()
                                 .addComponent(separadoruser1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -211,7 +206,7 @@ public class frm_controlusuario extends javax.swing.JFrame {
             panelfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelfondoLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(blue_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addGroup(panelfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(user)
@@ -225,7 +220,7 @@ public class frm_controlusuario extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(panelfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(clave)
-                    .addComponent(field_clave1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(field_clave, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ape)
                     .addComponent(field_ape, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -237,7 +232,7 @@ public class frm_controlusuario extends javax.swing.JFrame {
                     .addComponent(nom)
                     .addComponent(field_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rol)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combo_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelfondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(separadoruser2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,9 +245,9 @@ public class frm_controlusuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void field_clave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_clave1ActionPerformed
+    private void field_claveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field_claveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_field_clave1ActionPerformed
+    }//GEN-LAST:event_field_claveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,20 +286,20 @@ public class frm_controlusuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ape;
+    private javax.swing.JPanel blue_panel;
     private javax.swing.JLabel clave;
+    private javax.swing.JComboBox<String> combo_rol;
+    private javax.swing.JLabel controluser;
     private javax.swing.JLabel correo;
     private javax.swing.JTextField field_ape;
-    private javax.swing.JTextField field_clave1;
+    private javax.swing.JTextField field_clave;
     private javax.swing.JTextField field_correo;
     private javax.swing.JTextField field_nom;
     private javax.swing.JTextField field_user;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel nom;
     private javax.swing.JPanel panelfondo;
     private javax.swing.JLabel rol;
+    private javax.swing.JSeparator separador_top;
     private javax.swing.JSeparator separadoruser;
     private javax.swing.JSeparator separadoruser1;
     private javax.swing.JSeparator separadoruser2;

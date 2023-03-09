@@ -41,7 +41,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="blue_panel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
@@ -71,35 +71,27 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="clave" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="field_clave1" min="-2" pref="130" max="-2" attributes="0"/>
+                                          <Component id="field_clave" min="-2" pref="130" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="correo" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="field_correo" min="-2" pref="130" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="rol" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="jComboBox1" min="-2" pref="138" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="ape" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="field_ape" min="-2" pref="130" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="correo" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="field_correo" min="-2" pref="130" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace pref="14" max="32767" attributes="0"/>
-                                          <Component id="separadoruser3" min="-2" pref="296" max="-2" attributes="0"/>
+                                          <Component id="rol" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="combo_rol" min="-2" pref="138" max="-2" attributes="0"/>
                                       </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="ape" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="field_ape" min="-2" pref="130" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="separadoruser3" alignment="1" min="-2" pref="296" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -118,7 +110,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="jPanel2" min="-2" pref="108" max="-2" attributes="0"/>
+                  <Component id="blue_panel" min="-2" pref="108" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="user" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -134,7 +126,7 @@
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="clave" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="field_clave1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="field_clave" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="ape" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="field_ape" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
@@ -148,7 +140,7 @@
                       <Component id="nom" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="field_nom" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="rol" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="combo_rol" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -223,10 +215,10 @@
             </Property>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="jPanel2">
+        <Container class="javax.swing.JPanel" name="blue_panel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="93" green="21" red="3e" type="rgb"/>
+              <Color blue="c5" green="dc" red="4b" type="rgb"/>
             </Property>
           </Properties>
 
@@ -237,11 +229,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jSeparator1" min="-2" pref="293" max="-2" attributes="0"/>
+                              <Component id="separador_top" min="-2" pref="293" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="controluser" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="177" max="32767" attributes="0"/>
@@ -252,18 +244,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="controluser" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jSeparator1" min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="separador_top" min="-2" pref="12" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JSeparator" name="jSeparator1">
+            <Component class="javax.swing.JSeparator" name="separador_top">
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="controluser">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="48" style="1"/>
@@ -290,7 +282,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="field_clave1">
+        <Component class="javax.swing.JTextField" name="field_clave">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -304,7 +296,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="field_clave1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="field_claveActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="field_correo">
@@ -335,7 +327,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="combo_rol">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
