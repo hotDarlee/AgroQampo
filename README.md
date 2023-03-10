@@ -1,2 +1,2 @@
-# AgroQampo
-Sistema de agroinsumos
+#   Proyecto_AgroQampo
+Proyecto de sistema de agroinsumos
