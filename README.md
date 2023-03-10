@@ -1,2 +1,2 @@
 #   Proyecto_AgroQampo
-Proyecto de sistema de agroinsumos
+Sistema de facturación sobre empresa de insumos agrícolas
