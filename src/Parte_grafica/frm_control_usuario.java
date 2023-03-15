@@ -246,6 +246,7 @@ public class frm_control_usuario extends javax.swing.JFrame {
         lb_rol.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lb_rol.setText("Rol:");
 
+        cmb_rol.setBackground(new java.awt.Color(230, 230, 230));
         cmb_rol.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         cmb_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
 
@@ -393,7 +394,7 @@ public class frm_control_usuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lb_rol)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmb_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmb_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

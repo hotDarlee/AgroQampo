@@ -128,7 +128,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lb_rol" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cmb_rol" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmb_rol" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -300,6 +300,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cmb_rol">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="e6" green="e6" red="e6" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="11" style="1"/>
             </Property>

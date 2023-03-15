@@ -137,6 +137,7 @@ public class frm_producto extends javax.swing.JFrame {
         lb_categoria.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lb_categoria.setText("Categoría:");
 
+        cmb_categoria.setBackground(new java.awt.Color(230, 230, 230));
         cmb_categoria.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         cmb_categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
 
