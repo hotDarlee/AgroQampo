@@ -22,15 +22,14 @@ import javax.swing.table.TableRowSorter;
 
 public class frm_control_usuario extends javax.swing.JFrame {
 
-    //Declarando el nombre de la tabla
+    //Para el funcionamiento de la tabla
     DefaultTableModel Usuarios;
     
     public frm_control_usuario() {
         initComponents();
         
         this.Usuarios = (DefaultTableModel) table_usuario.getModel();
-        Mostrardatos("");
-        
+        Mostrardatos("");  
     }
     
     public final void Mostrardatos (String valor){
@@ -126,9 +125,9 @@ public class frm_control_usuario extends javax.swing.JFrame {
     
     
     public void Borrar(){
-    //Esta función es para limpiar los valores ingresados en los text field
+    //Esta función es para limpiar los valores ingresados en los textfield
         try{
-            txt_usuario.setText("");
+            txt_nombre.setText("");
             txt_contrasena.setText("");
             txt_nombre.setText("");
             txt_apellido.setText("");
@@ -139,7 +138,7 @@ public class frm_control_usuario extends javax.swing.JFrame {
         catch (Exception ex){
             JOptionPane.showInternalMessageDialog(null, "Error" +ex);
         }
-        }
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -150,6 +149,7 @@ public class frm_control_usuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txt_usuario1 = new javax.swing.JTextField();
         pnl_bg1 = new javax.swing.JPanel();
         pnl_bg2 = new javax.swing.JPanel();
         line1 = new javax.swing.JSeparator();
@@ -157,27 +157,25 @@ public class frm_control_usuario extends javax.swing.JFrame {
         img_logo = new javax.swing.JLabel();
         lb_usuario = new javax.swing.JLabel();
         txt_usuario = new javax.swing.JTextField();
-        line2 = new javax.swing.JSeparator();
         lb_contrasena = new javax.swing.JLabel();
-        line3 = new javax.swing.JSeparator();
+        txt_contrasena = new javax.swing.JPasswordField();
         lb_nombre = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
-        line4 = new javax.swing.JSeparator();
         lb_apellido = new javax.swing.JLabel();
         txt_apellido = new javax.swing.JTextField();
-        line5 = new javax.swing.JSeparator();
         lb_correo = new javax.swing.JLabel();
         txt_correo = new javax.swing.JTextField();
-        line6 = new javax.swing.JSeparator();
         lb_rol = new javax.swing.JLabel();
         cmb_rol = new javax.swing.JComboBox<>();
         pnl_btn_borrar = new javax.swing.JPanel();
         lb_borrar = new javax.swing.JLabel();
         pnl_btn_guardar = new javax.swing.JPanel();
         lb_guardar = new javax.swing.JLabel();
-        txt_contrasena = new javax.swing.JPasswordField();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_usuario = new javax.swing.JTable();
+
+        txt_usuario1.setBackground(new java.awt.Color(230, 230, 230));
+        txt_usuario1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Control de usuario");
@@ -198,11 +196,11 @@ public class frm_control_usuario extends javax.swing.JFrame {
         pnl_bg2Layout.setHorizontalGroup(
             pnl_bg2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_bg2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(26, 26, 26)
                 .addGroup(pnl_bg2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb_control_usuario)
                     .addComponent(line1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(465, Short.MAX_VALUE))
+                .addContainerGap(462, Short.MAX_VALUE))
         );
         pnl_bg2Layout.setVerticalGroup(
             pnl_bg2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,44 +217,31 @@ public class frm_control_usuario extends javax.swing.JFrame {
         lb_usuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lb_usuario.setText("Usuario:");
 
+        txt_usuario.setBackground(new java.awt.Color(230, 230, 230));
         txt_usuario.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        txt_usuario.setBorder(null);
-
-        line2.setForeground(new java.awt.Color(0, 0, 0));
 
         lb_contrasena.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lb_contrasena.setText("Contraseña:");
 
-        line3.setForeground(new java.awt.Color(0, 0, 0));
+        txt_contrasena.setBackground(new java.awt.Color(230, 230, 230));
 
         lb_nombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lb_nombre.setText("Nombre:");
 
+        txt_nombre.setBackground(new java.awt.Color(230, 230, 230));
         txt_nombre.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        txt_nombre.setBorder(null);
-        txt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_nombreKeyPressed(evt);
-            }
-        });
-
-        line4.setForeground(new java.awt.Color(0, 0, 0));
 
         lb_apellido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lb_apellido.setText("Apellido:");
 
+        txt_apellido.setBackground(new java.awt.Color(230, 230, 230));
         txt_apellido.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        txt_apellido.setBorder(null);
-
-        line5.setForeground(new java.awt.Color(0, 0, 0));
 
         lb_correo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lb_correo.setText("Correo:");
 
+        txt_correo.setBackground(new java.awt.Color(230, 230, 230));
         txt_correo.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        txt_correo.setBorder(null);
-
-        line6.setForeground(new java.awt.Color(0, 0, 0));
 
         lb_rol.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lb_rol.setText("Rol:");
@@ -320,7 +305,7 @@ public class frm_control_usuario extends javax.swing.JFrame {
         pnl_btn_guardar.setLayout(pnl_btn_guardarLayout);
         pnl_btn_guardarLayout.setHorizontalGroup(
             pnl_btn_guardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lb_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(lb_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
         );
         pnl_btn_guardarLayout.setVerticalGroup(
             pnl_btn_guardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,9 +314,6 @@ public class frm_control_usuario extends javax.swing.JFrame {
                 .addComponent(lb_guardar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        txt_contrasena.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        txt_contrasena.setBorder(null);
 
         table_usuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -355,44 +337,26 @@ public class frm_control_usuario extends javax.swing.JFrame {
                         .addComponent(img_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnl_bg1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(pnl_bg1Layout.createSequentialGroup()
-                                        .addComponent(lb_contrasena)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_contrasena))
-                                    .addGroup(pnl_bg1Layout.createSequentialGroup()
-                                        .addComponent(lb_apellido)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                                    .addComponent(line4)
-                                    .addGroup(pnl_bg1Layout.createSequentialGroup()
-                                        .addComponent(lb_usuario)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_usuario))
-                                    .addGroup(pnl_bg1Layout.createSequentialGroup()
-                                        .addComponent(lb_nombre)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_nombre))
-                                    .addComponent(line2)
-                                    .addComponent(line5)
-                                    .addComponent(line3))
-                                .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(line6, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(pnl_bg1Layout.createSequentialGroup()
-                                        .addComponent(lb_correo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_correo))
-                                    .addGroup(pnl_bg1Layout.createSequentialGroup()
-                                        .addComponent(lb_rol)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmb_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(pnl_bg1Layout.createSequentialGroup()
                                 .addComponent(pnl_btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(pnl_btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(39, 39, 39)
+                                .addComponent(pnl_btn_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lb_usuario)
+                            .addComponent(lb_rol)
+                            .addComponent(cmb_rol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_apellido)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lb_apellido)
+                                    .addComponent(txt_usuario)
+                                    .addComponent(txt_nombre)
+                                    .addComponent(lb_contrasena)
+                                    .addComponent(lb_nombre)
+                                    .addComponent(txt_contrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                                    .addComponent(txt_correo))
+                                .addComponent(lb_correo)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
@@ -404,51 +368,41 @@ public class frm_control_usuario extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addComponent(pnl_bg2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(img_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lb_usuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_bg1Layout.createSequentialGroup()
-                        .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lb_usuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lb_contrasena)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(line2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lb_contrasena)
-                            .addComponent(txt_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(line3, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lb_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lb_nombre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(line4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lb_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lb_apellido)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(line5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lb_correo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lb_correo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(line6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lb_rol)
-                            .addComponent(cmb_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(46, 46, 46)
-                        .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnl_btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnl_btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txt_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lb_rol)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmb_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(304, 304, 304))
+                .addGap(18, 18, 18)
+                .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnl_btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnl_btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(353, 353, 353))
         );
 
-        getContentPane().add(pnl_bg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 520));
+        getContentPane().add(pnl_bg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -462,8 +416,8 @@ public class frm_control_usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_lb_borrarMousePressed
 
     private void pnl_btn_guardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_btn_guardarMousePressed
-        //Botón para registrar datos nuevos a la BD
-        String usu = txt_usuario.getText();
+        //Botón para guardar/registrar datos nuevos a la BD
+        String usu = txt_nombre.getText();
         String cont = String.valueOf(txt_contrasena.getPassword());
         String nom = txt_nombre.getText();
         String ape = txt_apellido.getText();
@@ -511,7 +465,7 @@ public class frm_control_usuario extends javax.swing.JFrame {
 
     private void lb_guardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_guardarMousePressed
        //Botón para registrar datos nuevos a la BD
-        String usu = txt_usuario.getText();
+        String usu = txt_nombre.getText();
         String cont = String.valueOf(txt_contrasena.getPassword());
         String nom = txt_nombre.getText();
         String ape = txt_apellido.getText();
@@ -559,22 +513,6 @@ public class frm_control_usuario extends javax.swing.JFrame {
     
     //Esto es parte del evento que filtra la información de un textfield para que se presente en un jtable
     TableRowSorter trs;
-    private void txt_nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyPressed
-        //Evento que filtra la información de un textfield para que se presente en un jtable
-       
-        txt_nombre.addKeyListener(new KeyAdapter() {
-            
-            @Override
-            public void keyReleased(KeyEvent e) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + txt_nombre.getText(), 1));
-            }
-  
-        });
-        
-        trs = new TableRowSorter(Usuarios);
-        table_usuario.setRowSorter(trs);
-    }//GEN-LAST:event_txt_nombreKeyPressed
-
     /**
      * @param args the command line arguments
      */
@@ -624,11 +562,6 @@ public class frm_control_usuario extends javax.swing.JFrame {
     private javax.swing.JLabel lb_rol;
     private javax.swing.JLabel lb_usuario;
     private javax.swing.JSeparator line1;
-    private javax.swing.JSeparator line2;
-    private javax.swing.JSeparator line3;
-    private javax.swing.JSeparator line4;
-    private javax.swing.JSeparator line5;
-    private javax.swing.JSeparator line6;
     private javax.swing.JPanel pnl_bg1;
     private javax.swing.JPanel pnl_bg2;
     private javax.swing.JPanel pnl_btn_borrar;
@@ -639,5 +572,6 @@ public class frm_control_usuario extends javax.swing.JFrame {
     private javax.swing.JTextField txt_correo;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_usuario;
+    private javax.swing.JTextField txt_usuario1;
     // End of variables declaration//GEN-END:variables
 }
