@@ -125,7 +125,7 @@ public class frm_control_usuario extends javax.swing.JFrame {
     
     
     public void Borrar(){
-    //Esta función es para limpiar los valores ingresados en los textfield
+        //Esta función es para limpiar los valores ingresados en los textfield
         try{
             txt_nombre.setText("");
             txt_contrasena.setText("");
@@ -409,15 +409,17 @@ public class frm_control_usuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pnl_btn_borrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_btn_borrarMousePressed
-       Borrar();    
+        //Botón para eliminar datos del los textfield
+        Borrar();    
     }//GEN-LAST:event_pnl_btn_borrarMousePressed
 
     private void lb_borrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_borrarMousePressed
+       //Botón para eliminar datos del los textfield
         Borrar();
     }//GEN-LAST:event_lb_borrarMousePressed
 
     private void pnl_btn_guardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_btn_guardarMousePressed
-        //Botón para guardar/registrar datos nuevos a la BD
+        //Botón para registrar datos nuevos a la base de datos
         String usu = txt_nombre.getText();
         String cont = String.valueOf(txt_contrasena.getPassword());
         String nom = txt_nombre.getText();
@@ -465,7 +467,7 @@ public class frm_control_usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_pnl_btn_guardarMousePressed
 
     private void lb_guardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_guardarMousePressed
-       //Botón para registrar datos nuevos a la BD
+        //Botón para registrar datos nuevos a la base de datos
         String usu = txt_nombre.getText();
         String cont = String.valueOf(txt_contrasena.getPassword());
         String nom = txt_nombre.getText();
