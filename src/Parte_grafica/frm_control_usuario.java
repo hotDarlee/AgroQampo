@@ -97,7 +97,6 @@ public class frm_control_usuario extends javax.swing.JFrame {
         }
     }
     
-
     public boolean RevisarUsuario(String usuario){
         //Función para revisar si el usuario existe dentro de la base de datos
         PreparedStatement ps;
@@ -122,7 +121,6 @@ public class frm_control_usuario extends javax.swing.JFrame {
         
         return checkUser;
     }
-    
     
     public void Borrar(){
         //Esta función es para limpiar los valores ingresados en los textfield
@@ -167,12 +165,12 @@ public class frm_control_usuario extends javax.swing.JFrame {
         txt_correo = new javax.swing.JTextField();
         lb_rol = new javax.swing.JLabel();
         cmb_rol = new javax.swing.JComboBox<>();
-        pnl_btn_borrar = new javax.swing.JPanel();
-        lb_borrar = new javax.swing.JLabel();
-        pnl_btn_guardar = new javax.swing.JPanel();
-        lb_guardar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_usuario = new javax.swing.JTable();
+        btn_borrar = new javax.swing.JButton();
+        btn_guardar = new javax.swing.JButton();
+        btn_modificar = new javax.swing.JButton();
+        btn_imprimir = new javax.swing.JButton();
 
         txt_usuario1.setBackground(new java.awt.Color(230, 230, 230));
         txt_usuario1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -200,7 +198,7 @@ public class frm_control_usuario extends javax.swing.JFrame {
                 .addGroup(pnl_bg2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb_control_usuario)
                     .addComponent(line1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(462, Short.MAX_VALUE))
+                .addContainerGap(465, Short.MAX_VALUE))
         );
         pnl_bg2Layout.setVerticalGroup(
             pnl_bg2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,7 +210,7 @@ public class frm_control_usuario extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        img_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/WhatsApp_Image_2023-02-09_at_13.27.27-removebg-preview.png"))); // NOI18N
+        img_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Proyecto_AgroQampo\\src\\Imagenes\\Logo_1.png")); // NOI18N
 
         lb_usuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lb_usuario.setText("Usuario:");
@@ -250,72 +248,6 @@ public class frm_control_usuario extends javax.swing.JFrame {
         cmb_rol.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         cmb_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
 
-        pnl_btn_borrar.setBackground(new java.awt.Color(1, 166, 190));
-        pnl_btn_borrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pnl_btn_borrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                pnl_btn_borrarMousePressed(evt);
-            }
-        });
-
-        lb_borrar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        lb_borrar.setForeground(new java.awt.Color(255, 255, 255));
-        lb_borrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lb_borrar.setText("BORRAR");
-        lb_borrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lb_borrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lb_borrarMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnl_btn_borrarLayout = new javax.swing.GroupLayout(pnl_btn_borrar);
-        pnl_btn_borrar.setLayout(pnl_btn_borrarLayout);
-        pnl_btn_borrarLayout.setHorizontalGroup(
-            pnl_btn_borrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lb_borrar, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-        );
-        pnl_btn_borrarLayout.setVerticalGroup(
-            pnl_btn_borrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_btn_borrarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lb_borrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        pnl_btn_guardar.setBackground(new java.awt.Color(1, 166, 190));
-        pnl_btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pnl_btn_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                pnl_btn_guardarMousePressed(evt);
-            }
-        });
-
-        lb_guardar.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        lb_guardar.setForeground(new java.awt.Color(255, 255, 255));
-        lb_guardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lb_guardar.setText("GUARDAR");
-        lb_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lb_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lb_guardarMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnl_btn_guardarLayout = new javax.swing.GroupLayout(pnl_btn_guardar);
-        pnl_btn_guardar.setLayout(pnl_btn_guardarLayout);
-        pnl_btn_guardarLayout.setHorizontalGroup(
-            pnl_btn_guardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lb_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-        );
-        pnl_btn_guardarLayout.setVerticalGroup(
-            pnl_btn_guardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_btn_guardarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lb_guardar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         table_usuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -326,40 +258,65 @@ public class frm_control_usuario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(table_usuario);
 
+        btn_borrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Borrar.png"))); // NOI18N
+        btn_borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_borrarActionPerformed(evt);
+            }
+        });
+
+        btn_guardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Proyecto_AgroQampo\\src\\Imagenes\\Guardar.png")); // NOI18N
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
+
+        btn_modificar.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Proyecto_AgroQampo\\src\\Imagenes\\Modificar.png")); // NOI18N
+
+        btn_imprimir.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Proyecto_AgroQampo\\src\\Imagenes\\Imprimir.png")); // NOI18N
+
         javax.swing.GroupLayout pnl_bg1Layout = new javax.swing.GroupLayout(pnl_bg1);
         pnl_bg1.setLayout(pnl_bg1Layout);
         pnl_bg1Layout.setHorizontalGroup(
             pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_bg1Layout.createSequentialGroup()
-                .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnl_bg1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lb_usuario)
+                                .addComponent(lb_rol)
+                                .addComponent(cmb_rol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_apellido)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lb_apellido)
+                                        .addComponent(txt_usuario)
+                                        .addComponent(txt_nombre)
+                                        .addComponent(lb_contrasena)
+                                        .addComponent(lb_nombre)
+                                        .addComponent(txt_contrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                                        .addComponent(txt_correo))
+                                    .addComponent(lb_correo)))
+                            .addGroup(pnl_bg1Layout.createSequentialGroup()
+                                .addComponent(btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnl_bg1Layout.createSequentialGroup()
                         .addComponent(pnl_bg2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(img_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnl_bg1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnl_bg1Layout.createSequentialGroup()
-                                .addComponent(pnl_btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(pnl_btn_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(lb_usuario)
-                            .addComponent(lb_rol)
-                            .addComponent(cmb_rol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_apellido)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lb_apellido)
-                                    .addComponent(txt_usuario)
-                                    .addComponent(txt_nombre)
-                                    .addComponent(lb_contrasena)
-                                    .addComponent(lb_nombre)
-                                    .addComponent(txt_contrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                                    .addComponent(txt_correo))
-                                .addComponent(lb_correo)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(img_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         pnl_bg1Layout.setVerticalGroup(
             pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +326,7 @@ public class frm_control_usuario extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addComponent(pnl_bg2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(img_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lb_usuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,29 +353,26 @@ public class frm_control_usuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmb_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnl_btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnl_btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(353, 353, 353))
+                    .addComponent(btn_borrar)
+                    .addComponent(btn_guardar)
+                    .addComponent(btn_modificar)
+                    .addComponent(btn_imprimir))
+                .addGap(514, 514, 514))
         );
 
-        getContentPane().add(pnl_bg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 530));
+        getContentPane().add(pnl_bg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pnl_btn_borrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_btn_borrarMousePressed
+    private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
         //Botón para eliminar datos del los textfield
-        Borrar();    
-    }//GEN-LAST:event_pnl_btn_borrarMousePressed
+        Borrar(); 
+    }//GEN-LAST:event_btn_borrarActionPerformed
 
-    private void lb_borrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_borrarMousePressed
-       //Botón para eliminar datos del los textfield
-        Borrar();
-    }//GEN-LAST:event_lb_borrarMousePressed
-
-    private void pnl_btn_guardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl_btn_guardarMousePressed
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         //Botón para registrar datos nuevos a la base de datos
         String usu = txt_nombre.getText();
         String cont = String.valueOf(txt_contrasena.getPassword());
@@ -426,65 +380,16 @@ public class frm_control_usuario extends javax.swing.JFrame {
         String ape = txt_apellido.getText();
         String cor = txt_correo.getText();
         String rol = String.valueOf(cmb_rol.getSelectedIndex());
-
                 
         if(usu.equals("")){
-            JOptionPane.showMessageDialog(null, "Agrega un Usuario");
+            JOptionPane.showMessageDialog(null, "Agrega un usuario");
         }
         
         else if(cont.equals("")){
-            JOptionPane.showMessageDialog(null, "Agrega una Contraseña");
+            JOptionPane.showMessageDialog(null, "Agrega una contraseña");
         }      
         else if(RevisarUsuario(usu)){
-            JOptionPane.showMessageDialog(null, "Este Usuario ya existe");
-        }
-        else{
-        PreparedStatement ps;
-        String query = "INSERT INTO `usuarios`(`usuario`, `contrasena`, `nombre`, `apellido`, `correo`, `rol`) VALUES (?,?,?,?,?,?)";
-       
-        try {
-            ps = MyConnection.getConnection().prepareStatement(query);
-            
-            ps.setString(1, usu);
-            ps.setString(2, cont);
-            ps.setString(3, nom);
-            ps.setString(4, ape);
-            ps.setString(5, cor);
-            ps.setString(6, rol);
-            
-            if(ps.executeUpdate() > 0){
-                JOptionPane.showMessageDialog(null, "Nuevo Usuario Agregado");
-                Mostrardatos("");
-                Borrar();
-            }
-            } 
-        
-        catch (SQLException ex){
-            Logger.getLogger(frm_main.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "error "+ex);
-            }
-        }
-    }//GEN-LAST:event_pnl_btn_guardarMousePressed
-
-    private void lb_guardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_guardarMousePressed
-        //Botón para registrar datos nuevos a la base de datos
-        String usu = txt_nombre.getText();
-        String cont = String.valueOf(txt_contrasena.getPassword());
-        String nom = txt_nombre.getText();
-        String ape = txt_apellido.getText();
-        String cor = txt_correo.getText();
-        String rol = String.valueOf(cmb_rol.getSelectedIndex());
-
-                
-        if(usu.equals("")){
-            JOptionPane.showMessageDialog(null, "Agrega un Usuario");
-        }
-        
-        else if(cont.equals("")){
-            JOptionPane.showMessageDialog(null, "Agrega una Contraseña");
-        }      
-        else if(RevisarUsuario(usu)){
-            JOptionPane.showMessageDialog(null, "Este Usuario ya existe");
+            JOptionPane.showMessageDialog(null, "Este usuario ya existe");
         }
         else{
         PreparedStatement ps;
@@ -501,7 +406,7 @@ public class frm_control_usuario extends javax.swing.JFrame {
             ps.setString(6, rol);
             
             if(ps.executeUpdate() > 0){
-                JOptionPane.showMessageDialog(null, "Nuevo Usuario Agregado");
+                JOptionPane.showMessageDialog(null, "Nuevo usuario agregado");
                 Mostrardatos("");
                 Borrar();
             }
@@ -512,7 +417,7 @@ public class frm_control_usuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "error "+ex);
             }
         }
-    }//GEN-LAST:event_lb_guardarMousePressed
+    }//GEN-LAST:event_btn_guardarActionPerformed
     
     //Esto es parte del evento que filtra la información de un textfield para que se presente en un jtable
     TableRowSorter trs;
@@ -552,23 +457,23 @@ public class frm_control_usuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_borrar;
+    private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_imprimir;
+    private javax.swing.JButton btn_modificar;
     private javax.swing.JComboBox<String> cmb_rol;
     private javax.swing.JLabel img_logo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb_apellido;
-    private javax.swing.JLabel lb_borrar;
     private javax.swing.JLabel lb_contrasena;
     private javax.swing.JLabel lb_control_usuario;
     private javax.swing.JLabel lb_correo;
-    private javax.swing.JLabel lb_guardar;
     private javax.swing.JLabel lb_nombre;
     private javax.swing.JLabel lb_rol;
     private javax.swing.JLabel lb_usuario;
     private javax.swing.JSeparator line1;
     private javax.swing.JPanel pnl_bg1;
     private javax.swing.JPanel pnl_bg2;
-    private javax.swing.JPanel pnl_btn_borrar;
-    private javax.swing.JPanel pnl_btn_guardar;
     private javax.swing.JTable table_usuario;
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JPasswordField txt_contrasena;
