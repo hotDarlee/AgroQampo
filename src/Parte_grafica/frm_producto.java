@@ -463,7 +463,7 @@ public class frm_producto extends javax.swing.JFrame {
         }       
 
         else if(cantidad.equals("")){
-            JOptionPane.showMessageDialog(null, "Agrege  la cantidad existente que hay de producto"); 
+            JOptionPane.showMessageDialog(null, "Agrege la cantidad existente que hay de producto"); 
         }        
         
         else if(RevisarProducto(nombre)){
