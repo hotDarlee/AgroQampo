@@ -1,42 +1,62 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Parte_grafica;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
  * @author User
  */
 public class frm_producto extends javax.swing.JFrame {
-    
     //Para el funcionamiento de la tabla
     DefaultTableModel Productos;    
+        
+    //Esto es parte del evento que filtra la información de un textfield para que se presente en la tabla 
+    TableRowSorter trs;
+    
+    //Variables globales para la conexión de la base de datos
+    PreparedStatement ps;
+    ResultSet rs;
+    
+    //Instancias globales para la conexión de la base de datos
+    Connection cn = MyConnection.getConnection();
+    MyConnection cc = new MyConnection();
+
     
     public frm_producto() {
         initComponents();
         
+        //Para poner la pantalla centralizada
+        this.setLocationRelativeTo(null);
+        
+        //Parte perteneciente a la tabla
         this.Productos = (DefaultTableModel) table_producto.getModel();
-        Mostrardatos("");        
+        MostrarDatos("");       
     }
     
-    public final void Mostrardatos (String valor){
+    public final void MostrarDatos (String valor){
         //Función para mostrar datos en la tabla
-        MyConnection cc = new MyConnection();
-        Connection cn = MyConnection.getConnection();
         
-        Refrescartabla();
+        RefrescarTabla();
         
         Productos.addColumn("id_producto");
         Productos.addColumn("nom_producto");  
@@ -59,7 +79,7 @@ public class frm_producto extends javax.swing.JFrame {
             sql = "SELECT * FROM producto WHERE nom_producto='"+valor+"'";
         }
         
-        String[] datos = new String[9];
+        String[] datos = new String[10];
         
         try{
             Statement st = cn.createStatement();
@@ -75,41 +95,38 @@ public class frm_producto extends javax.swing.JFrame {
                 datos[6]=rs.getString(7);
                 datos[7]=rs.getString(8);
                 datos[8]=rs.getString(9);
+                datos[9]=rs.getString(10);
                 
                 Productos.addRow(datos);
                 
             }
             
             table_producto.setModel(Productos);
-        } 
-        
+        }      
         catch (SQLException ex){
             Logger.getLogger(frm_control_usuario.class.getName()).log(Level.SEVERE,null,ex);
             JOptionPane.showMessageDialog(null, "Error " + ex);
         }
     }
     
-    public void Refrescartabla(){
+    public void RefrescarTabla(){
         //Función para refrescar la tabla
         try{
             Productos.setColumnCount(0);
             Productos.setRowCount(0);
             table_producto.revalidate();
         }
-        
         catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Error " + ex);
         }
     }
     
     public boolean RevisarProducto(String nombre){
-        //Función para revisar si el usuario existe dentro de la base de datos
-        PreparedStatement ps;
-        ResultSet rs;
+        //Función para revisar si el producto existe dentro de la base de datos
         boolean checkProd = false;
         String query = "SELECT * FROM `producto` WHERE `nom_producto` =?";
         
-        try {
+        try{
             ps = MyConnection.getConnection().prepareStatement(query);
             ps.setString(1, nombre);
             
@@ -118,8 +135,7 @@ public class frm_producto extends javax.swing.JFrame {
             if(rs.next()){
                 checkProd = true;
             }
-        }   
-        
+        }
         catch (SQLException ex){
             JOptionPane.showMessageDialog(null, "Error" + ex);
         }
@@ -127,7 +143,7 @@ public class frm_producto extends javax.swing.JFrame {
         return checkProd;
     }
     
-    public void Borrar(){
+    public void Limpiar(){
         //Esta función es para limpiar los valores ingresados en los textfield
         try{
             txt_nombre.setText("");
@@ -140,7 +156,6 @@ public class frm_producto extends javax.swing.JFrame {
             txt_precio_c.setText("");    
             txt_cantidad.setText("");
         }
-
         catch (Exception ex){
             JOptionPane.showInternalMessageDialog(null, "Error" +ex);
         }
@@ -187,6 +202,7 @@ public class frm_producto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Producto");
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnl_bg1.setBackground(new java.awt.Color(255, 255, 255));
@@ -227,6 +243,11 @@ public class frm_producto extends javax.swing.JFrame {
 
         txt_nombre.setBackground(new java.awt.Color(230, 230, 230));
         txt_nombre.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        txt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nombreKeyTyped(evt);
+            }
+        });
 
         lb_categoria.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lb_categoria.setText("Categoría:");
@@ -284,6 +305,13 @@ public class frm_producto extends javax.swing.JFrame {
 
             }
         ));
+        table_producto.setColumnSelectionAllowed(true);
+        table_producto.setUpdateSelectionOnSort(false);
+        table_producto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_productoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table_producto);
 
         btn_borrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Borrar.png"))); // NOI18N
@@ -294,6 +322,11 @@ public class frm_producto extends javax.swing.JFrame {
         });
 
         btn_modificar.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Proyecto_AgroQampo\\src\\Imagenes\\Modificar.png")); // NOI18N
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
 
         btn_guardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Proyecto_AgroQampo\\src\\Imagenes\\Guardar.png")); // NOI18N
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -303,6 +336,11 @@ public class frm_producto extends javax.swing.JFrame {
         });
 
         btn_imprimir.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Proyecto_AgroQampo\\src\\Imagenes\\Imprimir.png")); // NOI18N
+        btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_imprimirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnl_bg1Layout = new javax.swing.GroupLayout(pnl_bg1);
         pnl_bg1.setLayout(pnl_bg1Layout);
@@ -356,9 +394,12 @@ public class frm_producto extends javax.swing.JFrame {
                 .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_bg1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(pnl_bg2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(img_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                        .addComponent(pnl_bg2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_bg1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(img_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(lb_nombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,8 +459,27 @@ public class frm_producto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
-        //Botón para eliminar datos del los textfield
-        Borrar();
+        //Botón para borrar un registro de la tabla y de la base de datos
+        String id = (String) table_producto.getValueAt(table_producto.getSelectedRow(),0) ;
+        
+        String query = "DELETE FROM producto WHERE id_producto=?";
+        try {
+            ps = MyConnection.getConnection().prepareStatement(query);
+            ps.setString(1, id);
+            
+            if(ps.executeUpdate() > 0)
+            {
+                JOptionPane.showMessageDialog(null, "Registro eliminado");
+                
+                //Funciones para mostrar los datos en la tabla  y para limpiar los textfields
+                Limpiar();
+                MostrarDatos(""); 
+            }           
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(frm_producto.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "error "+ex);
+        }
     }//GEN-LAST:event_btn_borrarActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
@@ -471,7 +531,7 @@ public class frm_producto extends javax.swing.JFrame {
         }
         else{
             PreparedStatement ps;
-            String query = "INSERT INTO `producto`(`nom_producto`, `categoria`, `desc_producto`, `id_proveedor`, `fecha_creacion`, `fecha_vencimiento`, `precio_compra`, `precio_venta`, `cantidad`) VALUES (?,?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO `producto`(`nom_producto`, `categoria`, `desc_producto`, `proveedor`, `fecha_creacion`, `fecha_vencimiento`, `precio_compra`, `precio_venta`, `cantidad`) VALUES (?,?,?,?,?,?,?,?,?)";
 
             try {
                 ps = MyConnection.getConnection().prepareStatement(query);
@@ -480,19 +540,20 @@ public class frm_producto extends javax.swing.JFrame {
                 ps.setString(2, categoria);
                 ps.setString(3, descripcion);
                 ps.setString(4, proveedor);                
-                ps.setString(5, precio_v);
-                ps.setString(6, precio_c);
-                ps.setString(7, fecha_v);
-                ps.setString(8, fecha_c);
+                ps.setString(5, fecha_c);
+                ps.setString(6, fecha_v);
+                ps.setString(7, precio_c);
+                ps.setString(8, precio_v);                
                 ps.setString(9, cantidad);
                 
                 if(ps.executeUpdate() > 0){
                     JOptionPane.showMessageDialog(null, "Nuevo producto agregado");
-                    Mostrardatos("");
-                    Borrar();
+                    
+                    //Funciones para mostrar los datos en la tabla cuando se guarden y para limpiar los textfields
+                    MostrarDatos("");
+                    Limpiar();
                 }
             }
-
             catch (SQLException ex){
                 Logger.getLogger(frm_main.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, "error "+ex);
@@ -500,6 +561,82 @@ public class frm_producto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        //Botón para actualizar o modificar los datos de la base de datos               
+        try{
+            String id = (String) Productos.getValueAt(table_producto.getSelectedRow(), 0);
+            String nombre = txt_nombre.getText();
+            String categoria = txt_categoria.getText();
+            String descripcion = txt_desc.getText();
+            String proveedor = txt_proveedor.getText();
+            String fecha_c = txt_fecha_c.getText();
+            String fecha_v = txt_fecha_v.getText();
+            String precio_c = txt_precio_c.getText();
+            String precio_v = txt_precio_v.getText();
+            String cantidad = txt_cantidad.getText();
+            
+            String query = "UPDATE `producto` SET nom_producto='"+nombre+"', categoria='"+categoria+"', desc_producto='"+descripcion+"', proveedor='"+proveedor+"', fecha_creacion='"+fecha_c+"', fecha_vencimiento='"+fecha_v+"', precio_compra='"+precio_c+"', precio_venta='"+precio_v+"', cantidad='"+cantidad+"' WHERE id_producto='"+id+"'";
+            
+            ps = cn.prepareStatement(query);
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Producto actualizado");
+            
+            //Funciones para mostrar los datos en la tabla cuando se actualicen y para limpiar los textfields
+            MostrarDatos("");
+            Limpiar();         
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);                     
+        }  
+    }//GEN-LAST:event_btn_modificarActionPerformed
+
+    private void table_productoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_productoMouseClicked
+        //Este evento realiza una accion que al topar un dato de la tabla se rellenan los textfiels
+        //Esto también es parte del botón de borrar y actualizar
+        this.txt_nombre.setText(Productos.getValueAt(table_producto.getSelectedRow(),1).toString());
+        this.txt_categoria.setText(Productos.getValueAt(table_producto.getSelectedRow(),2).toString());
+        this.txt_desc.setText(Productos.getValueAt(table_producto.getSelectedRow(),3).toString());
+        this.txt_proveedor.setText(Productos.getValueAt(table_producto.getSelectedRow(),4).toString());
+        this.txt_fecha_c.setText(Productos.getValueAt(table_producto.getSelectedRow(),5).toString());
+        this.txt_fecha_v.setText((String) Productos.getValueAt(table_producto.getSelectedRow(),6));
+        this.txt_precio_c.setText((String) Productos.getValueAt(table_producto.getSelectedRow(),7));
+        this.txt_precio_v.setText((String) Productos.getValueAt(table_producto.getSelectedRow(),8));
+        this.txt_cantidad.setText((String) Productos.getValueAt(table_producto.getSelectedRow(),9));
+    }//GEN-LAST:event_table_productoMouseClicked
+
+    private void txt_nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyTyped
+        //Evento que filtra la información de un textfield para que se presente en la tabla      
+        txt_nombre.addKeyListener(new KeyAdapter(){
+        
+            @Override
+            public void keyReleased(KeyEvent ke){
+            
+                trs.setRowFilter(RowFilter.regexFilter("(?i)" + txt_nombre.getText(), 1));               
+            }
+        });
+        
+        trs = new TableRowSorter(Productos);
+        table_producto.setRowSorter(trs);
+    }//GEN-LAST:event_txt_nombreKeyTyped
+
+    private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
+        //Botón para imprimir reporte
+        Connection con = MyConnection.getConnection();
+        try{
+            JasperReport jr = (JasperReport) JRLoader.loadObject(frm_producto.class.getResource("/Reportes/Reporte_producto.jasper"));
+            Map parametros = new HashMap<>();
+            parametros.put("Titulo", "Reporte de producto");
+
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, con);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+        }
+        catch (JRException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex);
+        }
+    }//GEN-LAST:event_btn_imprimirActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -567,4 +704,8 @@ public class frm_producto extends javax.swing.JFrame {
     private javax.swing.JTextField txt_precio_v;
     private javax.swing.JTextField txt_proveedor;
     // End of variables declaration//GEN-END:variables
+
+    private Connection getConnection() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

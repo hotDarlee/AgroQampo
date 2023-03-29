@@ -103,7 +103,7 @@ public class frm_login extends javax.swing.JFrame {
         line2.setForeground(new java.awt.Color(0, 0, 0));
 
         pnl_button.setBackground(new java.awt.Color(1, 166, 190));
-        pnl_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnl_button.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnl_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 pnl_buttonMousePressed(evt);
@@ -114,7 +114,7 @@ public class frm_login extends javax.swing.JFrame {
         lb_acceder.setForeground(new java.awt.Color(255, 255, 255));
         lb_acceder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_acceder.setText("ACCEDER");
-        lb_acceder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lb_acceder.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lb_acceder.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lb_accederMousePressed(evt);
@@ -135,10 +135,9 @@ public class frm_login extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        img_bg.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Downloads\\pexels-deneen-lt-1058401.jpg")); // NOI18N
-        img_bg.setText("HE");
+        img_bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pexels-deneen-lt-1058401.jpg"))); // NOI18N
 
-        img_logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Downloads\\WhatsApp_Image_2023-02-09_at_13.27.27-removebg-preview.png")); // NOI18N
+        img_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Logo_1.png"))); // NOI18N
 
         javax.swing.GroupLayout pnl_bgLayout = new javax.swing.GroupLayout(pnl_bg);
         pnl_bg.setLayout(pnl_bgLayout);
@@ -158,7 +157,7 @@ public class frm_login extends javax.swing.JFrame {
                             .addComponent(lb_iniciar_sesion)
                             .addComponent(txt_contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnl_bgLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(21, 21, 21)
                         .addComponent(img_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lb_logo)))
@@ -167,17 +166,17 @@ public class frm_login extends javax.swing.JFrame {
         );
         pnl_bgLayout.setVerticalGroup(
             pnl_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(img_bg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(img_bg, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(pnl_bgLayout.createSequentialGroup()
                 .addGroup(pnl_bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_bgLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(11, 11, 11)
                         .addComponent(img_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE))
+                        .addGap(18, 18, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_bgLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lb_logo)
-                        .addGap(50, 50, 50)))
+                        .addGap(43, 43, 43)))
                 .addComponent(lb_iniciar_sesion)
                 .addGap(27, 27, 27)
                 .addComponent(lb_usuario)

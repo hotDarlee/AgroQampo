@@ -7,137 +7,151 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
- * 
+ *
  *
  * @author User
  */
-
 public class frm_control_usuario extends javax.swing.JFrame {
-
     //Para el funcionamiento de la tabla
     DefaultTableModel Usuarios;
     
+    //Esto es parte del evento que filtra la información de un textfield para que se presente en la tabla 
+    TableRowSorter trs;
+    
+    //Variables globales para la conexión de la base de datos
+    PreparedStatement ps;
+    ResultSet rs;
+    
+    //Instancias globales para la conexión de la base de datos
+    Connection cn = MyConnection.getConnection();
+    MyConnection cc = new MyConnection();
+
     public frm_control_usuario() {
         initComponents();
         
+        //Para poner la pantalla centralizada
+        this.setLocationRelativeTo(null);
+        
+        //Parte perteneciente a la tabla
         this.Usuarios = (DefaultTableModel) table_usuario.getModel();
-        Mostrardatos("");  
+        MostrarDatos("");
     }
-    
-    public final void Mostrardatos (String valor){
+
+    public final void MostrarDatos(String valor) {
         //Función para mostrar datos en la tabla
-        MyConnection cc = new MyConnection();
-        Connection cn = MyConnection.getConnection();
-        
-        Refrescartabla();
-        
-        Usuarios.addColumn("id_usuario"); 
+
+        RefrescarTabla();
+
+        Usuarios.addColumn("id_usuario");
         Usuarios.addColumn("usuario");
         Usuarios.addColumn("contrasena");
-        Usuarios.addColumn("nombre"); 
+        Usuarios.addColumn("nombre");
         Usuarios.addColumn("apellido");
         Usuarios.addColumn("correo");
         Usuarios.addColumn("rol");
-        
+
         this.table_usuario.setModel(Usuarios);
-        
+
         String sql;
-        if (valor.equals("")){
+        if (valor.equals("")) {
             sql = "SELECT * FROM usuarios";
+        } 
+        else {
+            sql = "SELECT * FROM usuarios WHERE usuario='" + valor + "'";
         }
-        else{
-            sql = "SELECT * FROM usuarios WHERE usuario='"+valor+"'";
-        }
-        
+
         String[] datos = new String[6];
-        
-        try{
+
+        try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            
-            while(rs.next()){
-                datos[0]=rs.getString(1);
-                datos[1]=rs.getString(2);
-                datos[2]=rs.getString(3);
-                datos[3]=rs.getString(4);
-                datos[4]=rs.getString(5);
-                datos[5]=rs.getString(6);
-                
+
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
+                datos[4] = rs.getString(5);
+                datos[5] = rs.getString(6);
+
                 Usuarios.addRow(datos);
-                
+
             }
-            
+
             table_usuario.setModel(Usuarios);
-        } 
-        
-        catch (SQLException ex){
-            Logger.getLogger(frm_control_usuario.class.getName()).log(Level.SEVERE,null,ex);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(frm_control_usuario.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Error " + ex);
         }
     }
-    
-    public void Refrescartabla(){
+
+    public void RefrescarTabla() {
         //Función para refrescar la tabla
-        try{
+        try {
             Usuarios.setColumnCount(0);
             Usuarios.setRowCount(0);
             table_usuario.revalidate();
-        }
-        
-        catch(Exception ex){
+            
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error " + ex);
         }
     }
-    
-    public boolean RevisarUsuario(String usuario){
+
+    public boolean RevisarUsuario(String usuario) {
         //Función para revisar si el usuario existe dentro de la base de datos
-        PreparedStatement ps;
-        ResultSet rs;
+
         boolean checkUser = false;
         String query = "SELECT * FROM `usuarios` WHERE `usuario` =?";
-        
+
         try {
             ps = MyConnection.getConnection().prepareStatement(query);
             ps.setString(1, usuario);
-            
+
             rs = ps.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 checkUser = true;
             }
-        }   
-        
-        catch (SQLException ex){
+            
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error" + ex);
         }
-        
+
         return checkUser;
     }
-    
-    public void Borrar(){
+
+    public void Limpiar() {
         //Esta función es para limpiar los valores ingresados en los textfield
-        try{
+        try {
             txt_nombre.setText("");
             txt_contrasena.setText("");
             txt_nombre.setText("");
             txt_apellido.setText("");
             txt_correo.setText("");
             cmb_rol.setSelectedIndex(0);
-        }
-
-        catch (Exception ex){
-            JOptionPane.showInternalMessageDialog(null, "Error" +ex);
+        } 
+        catch (Exception ex) {
+            JOptionPane.showInternalMessageDialog(null, "Error" + ex);
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -177,6 +191,7 @@ public class frm_control_usuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Control de usuario");
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnl_bg1.setBackground(new java.awt.Color(255, 255, 255));
@@ -217,6 +232,11 @@ public class frm_control_usuario extends javax.swing.JFrame {
 
         txt_usuario.setBackground(new java.awt.Color(230, 230, 230));
         txt_usuario.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        txt_usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_usuarioKeyTyped(evt);
+            }
+        });
 
         lb_contrasena.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lb_contrasena.setText("Contraseña:");
@@ -256,6 +276,11 @@ public class frm_control_usuario extends javax.swing.JFrame {
 
             }
         ));
+        table_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_usuarioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table_usuario);
 
         btn_borrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Borrar.png"))); // NOI18N
@@ -273,8 +298,18 @@ public class frm_control_usuario extends javax.swing.JFrame {
         });
 
         btn_modificar.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Proyecto_AgroQampo\\src\\Imagenes\\Modificar.png")); // NOI18N
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
 
         btn_imprimir.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Proyecto_AgroQampo\\src\\Imagenes\\Imprimir.png")); // NOI18N
+        btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_imprimirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnl_bg1Layout = new javax.swing.GroupLayout(pnl_bg1);
         pnl_bg1.setLayout(pnl_bg1Layout);
@@ -368,8 +403,27 @@ public class frm_control_usuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
-        //Botón para eliminar datos del los textfield
-        Borrar(); 
+        //Botón para borrar un registro de la tabla y de la base de datos
+        String id = (String) table_usuario.getValueAt(table_usuario.getSelectedRow(),0) ;
+        
+        String query = "DELETE FROM usuarios WHERE id_usuario=?";
+        try {
+            ps = MyConnection.getConnection().prepareStatement(query);
+            ps.setString(1, id);
+            
+            if(ps.executeUpdate() > 0)
+            {
+                JOptionPane.showMessageDialog(null, "Registro eliminado");
+                
+                //Funciones para mostrar los datos en la tabla  y para limpiar los textfields
+                Limpiar();
+                MostrarDatos(""); 
+            }           
+        } 
+        catch (SQLException ex) {
+            Logger.getLogger(frm_producto.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "error "+ex);
+        }       
     }//GEN-LAST:event_btn_borrarActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
@@ -380,47 +434,114 @@ public class frm_control_usuario extends javax.swing.JFrame {
         String ape = txt_apellido.getText();
         String cor = txt_correo.getText();
         String rol = String.valueOf(cmb_rol.getSelectedIndex());
-                
-        if(usu.equals("")){
+
+        if (usu.equals("")) {
             JOptionPane.showMessageDialog(null, "Agrega un usuario");
-        }
-        
-        else if(cont.equals("")){
+        } else if (cont.equals("")) {
             JOptionPane.showMessageDialog(null, "Agrega una contraseña");
-        }      
-        else if(RevisarUsuario(usu)){
+        } else if (RevisarUsuario(usu)) {
             JOptionPane.showMessageDialog(null, "Este usuario ya existe");
-        }
-        else{
-        PreparedStatement ps;
-        String query = "INSERT INTO `usuarios`(`usuario`, `contrasena`, `nombre`, `apellido`, `correo`, `rol`) VALUES (?,?,?,?,?,?)";
-        
-        try {
-            ps = MyConnection.getConnection().prepareStatement(query);
-            
-            ps.setString(1, usu);
-            ps.setString(2, cont);
-            ps.setString(3, nom);
-            ps.setString(4, ape);
-            ps.setString(5, cor);
-            ps.setString(6, rol);
-            
-            if(ps.executeUpdate() > 0){
-                JOptionPane.showMessageDialog(null, "Nuevo usuario agregado");
-                Mostrardatos("");
-                Borrar();
-            }
-            } 
-        
-        catch (SQLException ex){
-            Logger.getLogger(frm_main.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "error "+ex);
+        } else {
+            PreparedStatement ps;
+            String query = "INSERT INTO `usuarios`(`usuario`, `contrasena`, `nombre`, `apellido`, `correo`, `rol`) VALUES (?,?,?,?,?,?)";
+
+            try {
+                ps = MyConnection.getConnection().prepareStatement(query);
+
+                ps.setString(1, usu);
+                ps.setString(2, cont);
+                ps.setString(3, nom);
+                ps.setString(4, ape);
+                ps.setString(5, cor);
+                ps.setString(6, rol);
+
+                if (ps.executeUpdate() > 0) {
+                    JOptionPane.showMessageDialog(null, "Nuevo usuario agregado");
+                    
+                    //Funciones para mostrar los datos en la tabla cuando se guarden y para limpiar los textfields
+                    MostrarDatos("");
+                    Limpiar();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(frm_main.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "error " + ex);
             }
         }
     }//GEN-LAST:event_btn_guardarActionPerformed
-    
-    //Esto es parte del evento que filtra la información de un textfield para que se presente en un jtable
-    TableRowSorter trs;
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        //Botón para actualizar o modificar los datos de la base de datos               
+        try{
+            String id = (String) Usuarios.getValueAt(table_usuario.getSelectedRow(), 0);
+            String usuario = txt_usuario.getText();
+            String contrasena = String.valueOf(txt_contrasena.getPassword());
+            String nombre = txt_nombre.getText();
+            String apellido = txt_apellido.getText();
+            String correo = txt_correo.getText();
+            String rol = String.valueOf(cmb_rol.getSelectedIndex());
+
+            String query = "UPDATE `usuarios` SET usuario='"+usuario+"', contrasena='"+contrasena+"', nombre='"+nombre+"', apellido='"+apellido+"', correo='"+correo+"', rol='"+rol+"' WHERE id_usuario='"+id+"'";
+            
+            ps = cn.prepareStatement(query);
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Usuario actualizado");
+            
+            //Funciones para mostrar los datos en la tabla cuando se actualicen y para limpiar los textfields
+            MostrarDatos("");
+            Limpiar();         
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);                     
+        } 
+    }//GEN-LAST:event_btn_modificarActionPerformed
+
+    private void table_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_usuarioMouseClicked
+        //Este evento realiza una accion que al topar un dato de la tabla se rellenan los textfiels
+        //Esto también es parte del botón de borrar y actualizar
+        
+        String rol = String.valueOf(cmb_rol.getSelectedIndex());
+        
+        this.txt_usuario.setText(Usuarios.getValueAt(table_usuario.getSelectedRow(),1).toString());
+        this.txt_contrasena.setText(Usuarios.getValueAt(table_usuario.getSelectedRow(),2).toString());
+        this.txt_nombre.setText(Usuarios.getValueAt(table_usuario.getSelectedRow(),3).toString());
+        this.txt_apellido.setText(Usuarios.getValueAt(table_usuario.getSelectedRow(),4).toString());
+        this.txt_correo.setText(Usuarios.getValueAt(table_usuario.getSelectedRow(),5).toString());
+        cmb_rol.setSelectedItem(rol);
+    }//GEN-LAST:event_table_usuarioMouseClicked
+
+    private void txt_usuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usuarioKeyTyped
+        //Evento que filtra la información de un textfield para que se presente en la tabla        
+        txt_usuario.addKeyListener(new KeyAdapter(){
+        
+            @Override
+            public void keyReleased(KeyEvent ke){
+            
+                trs.setRowFilter(RowFilter.regexFilter("(?i)" + txt_usuario.getText(), 1));               
+            }
+        });
+        
+        trs = new TableRowSorter(Usuarios);
+        table_usuario.setRowSorter(trs);
+    }//GEN-LAST:event_txt_usuarioKeyTyped
+
+    private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
+        //Botón para imprimir reporte
+        Connection con = MyConnection.getConnection();
+        try{
+            JasperReport jr = (JasperReport) JRLoader.loadObject(frm_producto.class.getResource("/Reportes/Reporte_usuario.jasper"));
+            Map parametros = new HashMap<>();
+            parametros.put("Titulo", "Reporte de usuario");
+
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, con);
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setVisible(true);
+        }
+        catch (JRException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex);
+        }
+    }//GEN-LAST:event_btn_imprimirActionPerformed
+
+
     /**
      * @param args the command line arguments
      */
